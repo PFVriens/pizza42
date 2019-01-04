@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pizza 42</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body background="assets/pizza_background_1920.jpg">
+
+    <div id="loading">
+        <img src="assets/loading.svg" alt="Loading spinner">
+    </div>
+
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header navbar-left">
+                <a class="navbar-brand" href="#">Pizza 42</a>
+                <button id="btn-home-view" class="btn btn-primary btn-margin">
+                    Home
+                </button>
+            </div>
+            <div class="navbar-header navbar-right">
+                <button id="btn-profile-view" class="btn btn-primary btn-margin">
+                    Profile
+                </button>
+
+                <button id="btn-ping-view" class="btn btn-primary btn-margin">
+                    Call API
+                </button>
+
+                <button id="qsLoginBtn" class="btn btn-primary btn-margin">
+                    Log In / Register
+                </button>
+
+                <button id="qsLogoutBtn" class="btn btn-primary btn-margin">
+                    Log Out
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="jumbotron">
+                        <h1>Pizza 42</h1>
+                        <p class="lead">Welcome to the best pizza place in town</p>
+                        <p id="loginStatus">Please log in to order our delicious pizza\'s</p>
+                        <style>
+                            .pizza-add {
+                                display: none;
+                            }
+
+                            .order-submit {
+                                display: none;
+                            }
+                        </style>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3>Shopping cart</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4>Total: €<span id="total">0.00</span></h4>
+                            <button id="clearCartBtn" class="btn btn-warning btn-info">
+                                Clear my cart
+                            </button>
+                        </div>
+                        <div class="panel-footer">
+                            <button id="submitBtn" class="btn btn-primary order-submit">
+                                Login to place order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Pepperoni Extreme</div>
+                        <div class="panel-body">
+                            <p>Mozzarella, Tomato & Double Pepperoni</p>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="btn btn-success pizza-add">Add to cart <span class="price">€6.99</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Hot & Spicy</div>
+                        <div class="panel-body">
+                            <p>Mozzarella, Tomato, Pepperoni, Jalapenos, Salami & Bell Peppers</p>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="btn btn-success pizza-add">Add to cart <span class="price">€8.99</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Vegetarian</div>
+                        <div class="panel-body">
+                            <p>Mozzarella, Tomato, Mushroom, Red Onion, Olives, Fresh Tomato, Sweetcorn & Bell Peppers</p>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="btn btn-success pizza-add">Add to cart <span class="price">€7.99</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="home-view" class="row content">
+                <div class="col-lg-9">
+                    <div>
+                        <h4></h4>
+                    </div>
+                </div>
+            </div>
+            <div id="profile-view" class="row content">
+                <div class="col-lg-9">
+                    <div class="panel panel-primary profile-area">
+                        <div class="panel-heading">
+                            <h3>Profile</h3>
+                        </div>
+                        <div class="panel-body">
+                            <img class="avatar" alt="avatar">
+                            <div>
+                                <label><i class="glyphicon glyphicon-user"></i> Nickname</label>
+                                <h3 class="nickname"></h3>
+                            </div>
+                            <pre class="full-profile"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="ping-view" class="row content">
+                <div class="col-lg-9">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1>Make a Call to the Server</h1>
+                        </div>
+                        <div class="panel-body">
+                            <p id="call-private-message">
+                                Log in to call a private (secured) server endpoint.
+                            </p>
+
+                            <button id="btn-ping-public" class="btn btn-primary">
+                                Call Public
+                            </button>
+
+                            <button id="btn-ping-private" class="btn btn-primary">
+                                Call Secured
+                            </button>
+                            <br><br>
+                            <p>
+                                The secured call will fetch the residences from Google (if you used Google to access this site) and store them in the user_metadata
+                            </p>
+                        </div>
+                        <div class="panel-footer">
+                            <p id="ping-message"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#">© 2019 - Pizza 42</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="node_modules/auth0-js/build/auth0.js"></script>
+    <script src="auth0-variables.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
