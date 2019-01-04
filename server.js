@@ -44,22 +44,23 @@ const checkJwt = jwt({
     algorithms: ['RS256']
 });
 
-const checkScopes = jwtAuthz(['read:messages']);
+const checkScopesPrivate = jwtAuthz(['read:messages']);
+const checkScopesUpdate = jwtAuthz(['read:users']);
 
 app.get('/api/public', function(req, res) {
     res.json({
-        message: "Hello from a public endpoint! You don't need to be authenticated to see this."
+        message: "Hello from a public endpoint! You only need to be authenticated to see this."
     });
 });
 
-app.get('/api/private', function(req, res) {
+app.get('/api/private', checkJwt, checkScopesPrivate, function(req, res) {
     console.log('Query: ' + req.query.id);
     res.json({
         message: "Hello from a secured endpoint! You need to be authenticated and have a scope of read:messages to see this."
     });
 });
 
-app.get('/api/update_user', checkJwt, checkScopes, function(req, res) {
+app.get('/api/update_user', checkJwt, checkScopesUpdate, function(req, res) {
     var userId = req.query.id;
     var auth0AccessToken;
     var googleResidences = [];
@@ -182,12 +183,12 @@ app.get('/api/update_user', checkJwt, checkScopes, function(req, res) {
             if (message) {
                 console.log(message);
                 res.json({
-                    message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.<br><br>We were not able to fetch the residences if/as known by Google due to:<br><br>" + message
+                    message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:users to see this.<br><br>We were not able to fetch the residences if/as known by Google due to:<br><br>" + message
                 });
             } else {
                 console.log('No errors or skips happened in any of the steps, operation done!');
                 res.json({
-                    message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.<br><br>We have retrieved and saved the residences as known by Google:<br><br>" + JSON.stringify(googleResidences)
+                    message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:users to see this.<br><br>We have retrieved and saved the residences as known by Google:<br><br>" + JSON.stringify(googleResidences)
                 });
             }
         });

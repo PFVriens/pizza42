@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
         redirectUri: AUTH0_CALLBACK_URL,
         audience: AUTH0_AUDIENCE,
         responseType: 'token id_token',
-        scope: 'openid profile email read:messages',
+        scope: 'openid profile email read:messages read:users',
         leeway: 60
     });
 
@@ -28,10 +28,11 @@ window.addEventListener('load', function() {
 
     var homeViewBtn = document.getElementById('btn-home-view');
     var profileViewBtn = document.getElementById('btn-profile-view');
-    var pingViewBtn = document.getElementById('btn-ping-view');
+    var apiViewBtn = document.getElementById('btn-api-view');
 
-    var pingPublic = document.getElementById('btn-ping-public');
-    var pingPrivate = document.getElementById('btn-ping-private');
+    var apiPublicBtn = document.getElementById('btn-api-public');
+    var apiPrivateBtn = document.getElementById('btn-api-private');
+    var apiUpdateBtn = document.getElementById('btn-api-update');
 
     var callPrivateMessage = document.getElementById('call-private-message');
     var pingMessage = document.getElementById('ping-message');
@@ -95,12 +96,15 @@ window.addEventListener('load', function() {
         updateCart(7.99);
     });
 
-    pingPublic.addEventListener('click', function() {
+    apiPublicBtn.addEventListener('click', function() {
         callAPI('/public', false);
     });
 
-    pingPrivate.addEventListener('click', function() {
-        //callAPI('/private', true);
+    apiPrivateBtn.addEventListener('click', function() {
+        callAPI('/private', true);
+    });
+
+    apiUpdateBtn.addEventListener('click', function() {
         callAPI('/update_user', true);
     });
 
@@ -113,7 +117,7 @@ window.addEventListener('load', function() {
         profileView.style.display = 'none';
     });
 
-    pingViewBtn.addEventListener('click', function() {
+    apiViewBtn.addEventListener('click', function() {
         homeView.style.display = 'none';
         pingView.style.display = 'block';
         profileView.style.display = 'none';
@@ -172,8 +176,8 @@ window.addEventListener('load', function() {
             loginBtn.style.display = 'none';
             logoutBtn.style.display = 'inline-block';
             profileViewBtn.style.display = 'inline-block';
-            pingViewBtn.style.display = 'inline-block';
-            pingPrivate.style.display = 'inline-block';
+            apiViewBtn.style.display = 'inline-block';
+            apiPrivateBtn.style.display = 'inline-block'; // Why only this one?
             callPrivateMessage.style.display = 'none';
             pizzaButton1.style.display = 'inline-block';
             pizzaButton2.style.display = 'inline-block';
@@ -209,8 +213,8 @@ window.addEventListener('load', function() {
             profileViewBtn.style.display = 'none';
             profileView.style.display = 'none';
             pingView.style.display = 'none';
-            pingViewBtn.style.display = 'none';
-            pingPrivate.style.display = 'none';
+            apiViewBtn.style.display = 'none';
+            apiPrivateBtn.style.display = 'none';
             callPrivateMessage.style.display = 'block';
             pizzaButton1.style.display = 'none';
             pizzaButton2.style.display = 'none';
