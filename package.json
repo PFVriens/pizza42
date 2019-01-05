@@ -1,5 +1,5 @@
 {
-  "name": "calling-an-api",
+  "name": "pizza42_poc",
   "version": "0.0.0",
   "description": "",
   "main": "server.js",
@@ -20,6 +20,7 @@
     "express-jwt": "^5.3.0",
     "express-jwt-authz": "^1.0.0",
     "jwks-rsa": "^1.2.0",
+    "moment": "^2.23.0",
     "npm-run-all": "^4.0.2",
     "serve": "^10.1.1"
   }
