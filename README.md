@@ -4,8 +4,8 @@ This Proof-of-Concept was created as the result of a technical challenge.
 
 It demonstrates the following:
 
-- [x] Show how a new customer can sign up and an existing customer can sign in with email/password or Google
-- [x] Ensure that if a customer signs in with either an email/password or Google, it will be treated as the same user if they use the same email address
+- [x] Show how a new customer can sign up and an existing customer can sign in with email/password or Google.
+- [x] Ensure that if a customer signs in with either an email/password or Google, it will be treated as the same user if they use the same email address.<br/><br/>**Note: You will need to enable the out-of-the-box [Link Accounts with Same Email Address while Merging Metadata](https://manage.auth0.com/#/rules) rule for this**
 - [x] Show that the solution can be built as a “modern” web application (SPA) which can then securely call the API backend of Pizza 42 using OAuth.
 - [x] Require that a customer has a verified email address before they can place a pizza order, but they should still be able to sign into the app.
 - [ ] Use Auth0 features to gather additional information about a user (specifically their gender) without prompting them directly.<br/><br/>Gender is not asked for during email/password registration but could be provided through a social provider like Google.  
