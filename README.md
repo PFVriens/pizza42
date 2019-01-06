@@ -13,7 +13,7 @@ It demonstrates the following:
 - [ ] Use Auth0 to call the Google People API to fetch the total number of Google connections a user has and store that count in their user profile.<br/><br/>Google could store the residences of  user and a user can control [if/what others can see.](https://aboutme.google.com)
     - [x] The backend of this PoC fetches the residences (if any) and stores this in the user profile
 
-** Note: Proof of Concept on Azure **
+**Note: Proof of Concept on Azure**
 
 The PoC was deployed to Azure but with two split 'App Services'. The Azure App Services basically run [custom Docker containers](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image):
 
