@@ -13,7 +13,14 @@ It demonstrates the following:
 - [ ] Use Auth0 to call the Google People API to fetch the total number of Google connections a user has and store that count in their user profile.<br/><br/>Google could store the residences of  user and a user can control [if/what others can see.](https://aboutme.google.com)
     - [x] The backend of this PoC fetches the residences (if any) and stores this in the user profile
 
-## Getting Started
+** Note: Proof of Concept on Azure **
+
+The PoC was deployed to Azure but with two split 'App Services'. The Azure App Services basically run [custom Docker containers](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image):
+
+- One for the SPA: https://pizza42.azurewebsites.net
+- And another one for the backend API: https://pizza42-api.azurewebsites.net
+
+## Getting started with a local deploy
 
 If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account.
 
@@ -82,5 +89,3 @@ Execute in command line `sh exec.sh` to run the Docker in Linux, or `.\exec.ps1`
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
-
-
